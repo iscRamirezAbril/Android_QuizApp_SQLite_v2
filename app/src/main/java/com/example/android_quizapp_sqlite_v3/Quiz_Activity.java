@@ -14,11 +14,13 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
 public class Quiz_Activity extends AppCompatActivity {
+    private QuizDbHelper dbHelper;
     private static final long COUNTDOWN_IN_MILIS = 30000;
 
     private static final String KEY_SCORE = "keyScore";
@@ -72,12 +74,14 @@ public class Quiz_Activity extends AppCompatActivity {
         textColorDefaultCd = textViewCountDown.getTextColors();
 
         Intent intent = getIntent();
+        dbHelper = new QuizDbHelper(this);
         int categoryID = intent.getIntExtra(QuizMenu_Activity.EXTRA_CATEGORY_ID, 0);
         String categoryName = intent.getStringExtra(QuizMenu_Activity.EXTRA_CATEGORY_NAME);
-        String difficulty = intent.getStringExtra(QuizMenu_Activity.EXTRA_DIFFICULTY);
+        String difficulty = getIntent().getStringExtra(QuizMenu_Activity.EXTRA_DIFFICULTY);
 
-        QuizDbHelper dbHelper = new QuizDbHelper(this);
-        questionList = dbHelper.getAllQuestions();
+        ArrayList<Question> questions = dbHelper.getQuestions(difficulty, categoryID);
+        questionList = questions;
+
         questionCountTotal = questionList.size();
         Collections.shuffle(questionList);
 

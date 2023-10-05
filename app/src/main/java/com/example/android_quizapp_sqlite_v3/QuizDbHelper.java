@@ -74,15 +74,15 @@ public class QuizDbHelper extends SQLiteOpenHelper {
     }
 
     private void fillCategoriesTable() {
-        Category c1 = new Category("Additions");
+        Category c1 = new Category("Sumas");
         addCategory(c1);
-        Category c2 = new Category("Subtractions");
+        Category c2 = new Category("Restas");
         addCategory(c2);
-        Category c3 = new Category("Multiplications");
+        Category c3 = new Category("Multiplicaciones");
         addCategory(c3);
-        Category c4 = new Category("Divisions");
+        Category c4 = new Category("Divisiones");
         addCategory(c4);
-        Category c5 = new Category("Mixed");
+        Category c5 = new Category("Mixtas");
         addCategory(c5);
     }
 
@@ -93,27 +93,27 @@ public class QuizDbHelper extends SQLiteOpenHelper {
     }
 
     private void fillQuestionsTable() {
-        Question q1 = new Question("Programming, Easy: A is correct",
+        Question q1 = new Question("Sumas, Easy: A is correct",
                 "A", "B", "C", 1,
                 Question.DIFFICULTY_EASY, Category.ADDITIONS);
         addQuestion(q1);
-        Question q2 = new Question("Geography, Medium: B is correct",
+        Question q2 = new Question("Restas, Medium: B is correct",
                 "A", "B", "C", 2,
                 Question.DIFFICULTY_MEDIUM, Category.SUBTRACTIONS);
         addQuestion(q2);
-        Question q3 = new Question("Math, Hard: C is correct",
+        Question q3 = new Question("Multiplicaciones, Hard: C is correct",
                 "A", "B", "C", 3,
                 Question.DIFFICULTY_HARD, Category.MULTIPLICATIONS);
         addQuestion(q3);
-        Question q4 = new Question("Math, Easy: A is correct",
+        Question q4 = new Question("Multiplicaciones, Easy: A is correct",
                 "A", "B", "C", 1,
                 Question.DIFFICULTY_EASY, Category.MULTIPLICATIONS);
         addQuestion(q4);
-        Question q5 = new Question("Non existing, Easy: A is correct",
+        Question q5 = new Question("Divisiones, Easy: A is correct",
                 "A", "B", "C", 1,
                 Question.DIFFICULTY_EASY, 4);
         addQuestion(q5);
-        Question q6 = new Question("Non existing, Medium: B is correct",
+        Question q6 = new Question("Mixtas, Medium: B is correct",
                 "A", "B", "C", 2,
                 Question.DIFFICULTY_MEDIUM, 5);
         addQuestion(q6);
@@ -175,13 +175,14 @@ public class QuizDbHelper extends SQLiteOpenHelper {
     }
 
     @SuppressLint("Range")
-    public ArrayList<Question> getQuestions(String difficulty) {
+    public ArrayList<Question> getQuestions(String difficulty, int categoryID) {
         ArrayList<Question> questionList = new ArrayList<>();
         db = getReadableDatabase();
 
-        String[] selectionArgs = new String[]{difficulty};
+        String[] selectionArgs = new String[]{difficulty, String.valueOf(categoryID)};
         Cursor c = db.rawQuery("SELECT * FROM " + QuestionsTable.TABLE_NAME +
-                " WHERE " + QuestionsTable.COLUMN_DIFFICULTY + " = ?", selectionArgs);
+                " WHERE " + QuestionsTable.COLUMN_DIFFICULTY + " = ? AND " +
+                QuestionsTable.COLUMN_CATEGORY_ID + " = ?", selectionArgs);
 
         if (c.moveToFirst()) {
             do {
