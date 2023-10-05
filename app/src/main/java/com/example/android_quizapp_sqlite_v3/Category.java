@@ -1,9 +1,13 @@
 package com.example.android_quizapp_sqlite_v3;
 
+import androidx.annotation.NonNull;
+
 public class Category {
-    public static final int PROGRAMMING = 1;
-    public static final int GEOGRAPHY = 2;
-    public static final int MATH = 3;
+    public static final int ADDITIONS = 1;
+    public static final int SUBTRACTIONS = 2;
+    public static final int MULTIPLICATIONS = 3;
+    public static final int DIVISIONS = 4;
+    public static final int MIXED = 5;
 
     private int id;
     private String name;
@@ -29,5 +33,10 @@ public class Category {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return getName();
     }
 }

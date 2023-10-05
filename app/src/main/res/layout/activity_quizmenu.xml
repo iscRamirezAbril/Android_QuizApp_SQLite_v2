@@ -12,17 +12,16 @@
         android:id="@+id/btnMixedQuiz"
         android:layout_width="105dp"
         android:layout_height="107dp"
-        android:layout_marginTop="21dp"
         android:background="@drawable/borderbutton3"
         android:contentDescription="NULL"
         android:scaleType="centerCrop"
         android:src="@drawable/exam_mixed"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.918"
+        app:layout_constraintHorizontal_bias="0.993"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtLayoutMessage2"
-        app:layout_constraintVertical_bias="0.077" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.838" />
 
     <TextView
         android:id="@+id/txtView_title"
@@ -36,27 +35,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.154" />
-
-    <TextView
-        android:id="@+id/txtLayoutMessage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="casual"
-        android:text="¿Te gustan las matemáticas?"
-        android:textAllCaps="false"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtView_title"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.062" />
 
     <TextView
         android:id="@+id/txtLayoutMessage2"
@@ -70,81 +52,94 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtView_title"
-        app:layout_constraintVertical_bias="0.122" />
+        app:layout_constraintVertical_bias="0.109" />
+
+    <TextView
+        android:id="@+id/txtLayoutMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:text="¿Te gustan las matemáticas?"
+        android:textAllCaps="false"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtView_title"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
         android:id="@+id/btnAddQuiz"
         android:layout_width="105dp"
         android:layout_height="107dp"
-        android:layout_marginTop="19dp"
         android:background="@drawable/borderbutton3"
         android:contentDescription="NULL"
         android:scaleType="centerCrop"
         android:src="@drawable/exam_additions"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.068"
+        app:layout_constraintHorizontal_bias="0.011"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtLayoutMessage2"
-        app:layout_constraintVertical_bias="0.085" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.819" />
 
     <ImageButton
         android:id="@+id/btnSubsQuiz"
         android:layout_width="105dp"
         android:layout_height="107dp"
-        android:layout_marginTop="19dp"
         android:background="@drawable/borderbutton3"
         android:contentDescription="NULL"
         android:scaleType="centerCrop"
         android:src="@drawable/exam_substractions"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.279"
+        app:layout_constraintHorizontal_bias="0.252"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtLayoutMessage2"
-        app:layout_constraintVertical_bias="0.085" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.819" />
 
     <ImageButton
         android:id="@+id/btnMultiQuiz"
         android:layout_width="105dp"
         android:layout_height="107dp"
-        android:layout_marginTop="20dp"
         android:background="@drawable/borderbutton3"
         android:contentDescription="NULL"
         android:scaleType="centerCrop"
         android:src="@drawable/exam_multiplications"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtLayoutMessage2"
-        app:layout_constraintVertical_bias="0.076" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.825" />
 
     <ImageButton
         android:id="@+id/btnDivQuiz"
         android:layout_width="105dp"
         android:layout_height="107dp"
-        android:layout_marginTop="20dp"
         android:background="@drawable/borderbutton3"
         android:contentDescription="NULL"
         android:scaleType="centerCrop"
         android:src="@drawable/exam_divisions"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.709"
+        app:layout_constraintHorizontal_bias="0.75"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtLayoutMessage2"
-        app:layout_constraintVertical_bias="0.076" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.835" />
 
     <ImageButton
         android:id="@+id/imageButton11"
         android:layout_width="52dp"
         android:layout_height="53dp"
         android:background="@drawable/borderbutton2"
-        android:src="@drawable/ic_close"
         android:contentDescription="NULL"
+        android:src="@drawable/ic_close"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.976"
@@ -156,7 +151,7 @@
         android:id="@+id/lblAddQuiz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="15dp"
         android:fontFamily="serif"
         android:text="Sumas"
         android:textColor="#FFFFFF"
@@ -164,16 +159,16 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.08"
+        app:layout_constraintHorizontal_bias="0.039"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnAddQuiz"
-        app:layout_constraintVertical_bias="0.17000002" />
+        app:layout_constraintVertical_bias="0.038" />
 
     <TextView
         android:id="@+id/lblSubsQuiz2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="15dp"
         android:fontFamily="serif"
         android:text="Restas"
         android:textColor="#000000"
@@ -181,16 +176,16 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.28"
+        app:layout_constraintHorizontal_bias="0.26"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnSubsQuiz"
-        app:layout_constraintVertical_bias="0.179" />
+        app:layout_constraintVertical_bias="0.12" />
 
     <TextView
         android:id="@+id/lblMultiQuiz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="15dp"
         android:fontFamily="serif"
         android:text="Multiplicaciones"
         android:textColor="#000000"
@@ -200,13 +195,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnMultiQuiz"
-        app:layout_constraintVertical_bias="0.17000002" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/lblDivQuiz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="15dp"
         android:fontFamily="serif"
         android:text="Divisiones"
         android:textColor="#000000"
@@ -214,16 +209,16 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.709"
+        app:layout_constraintHorizontal_bias="0.738"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnDivQuiz"
-        app:layout_constraintVertical_bias="0.17000002" />
+        app:layout_constraintVertical_bias="0.384" />
 
     <TextView
         android:id="@+id/lblMixedQuiz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:fontFamily="serif"
         android:text="Mixtas"
         android:textColor="#000000"
@@ -231,9 +226,21 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.896"
+        app:layout_constraintHorizontal_bias="0.954"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnMixedQuiz"
-        app:layout_constraintVertical_bias="0.17000002" />
+        app:layout_constraintVertical_bias="0.407" />
+
+    <Spinner
+        android:id="@+id/spinner_difficulty"
+        android:layout_width="178dp"
+        android:layout_height="32dp"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.469" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

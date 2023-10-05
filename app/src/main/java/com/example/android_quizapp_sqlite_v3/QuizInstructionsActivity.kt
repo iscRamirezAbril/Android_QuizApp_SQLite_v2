@@ -6,7 +6,7 @@ import android.view.Window
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_quiz_instructions.*
-// Esto es un comentario de prueba
+
 class QuizInstructionsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

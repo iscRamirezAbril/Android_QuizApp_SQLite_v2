@@ -10,15 +10,24 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.example.android_quizapp_sqlite_v3.QuizContract.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class QuizDbHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "MyAwesomeQuiz.db";
     private static final int DATABASE_VERSION = 1;
 
+    private static  QuizDbHelper instance;
     private SQLiteDatabase db;
 
     public QuizDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    }
+
+    public static synchronized QuizDbHelper getInstance(Context context) {
+        if (instance == null) {
+            instance = new QuizDbHelper(context.getApplicationContext());
+        }
+        return instance;
     }
 
     @Override
@@ -65,12 +74,16 @@ public class QuizDbHelper extends SQLiteOpenHelper {
     }
 
     private void fillCategoriesTable() {
-        Category c1 = new Category("Programming");
+        Category c1 = new Category("Additions");
         addCategory(c1);
-        Category c2 = new Category("Geography");
+        Category c2 = new Category("Subtractions");
         addCategory(c2);
-        Category c3 = new Category("Math");
+        Category c3 = new Category("Multiplications");
         addCategory(c3);
+        Category c4 = new Category("Divisions");
+        addCategory(c4);
+        Category c5 = new Category("Mixed");
+        addCategory(c5);
     }
 
     private void addCategory(Category category) {
@@ -82,19 +95,19 @@ public class QuizDbHelper extends SQLiteOpenHelper {
     private void fillQuestionsTable() {
         Question q1 = new Question("Programming, Easy: A is correct",
                 "A", "B", "C", 1,
-                Question.DIFFICULTY_EASY, Category.PROGRAMMING);
+                Question.DIFFICULTY_EASY, Category.ADDITIONS);
         addQuestion(q1);
         Question q2 = new Question("Geography, Medium: B is correct",
                 "A", "B", "C", 2,
-                Question.DIFFICULTY_MEDIUM, Category.GEOGRAPHY);
+                Question.DIFFICULTY_MEDIUM, Category.SUBTRACTIONS);
         addQuestion(q2);
         Question q3 = new Question("Math, Hard: C is correct",
                 "A", "B", "C", 3,
-                Question.DIFFICULTY_HARD, Category.MATH);
+                Question.DIFFICULTY_HARD, Category.MULTIPLICATIONS);
         addQuestion(q3);
         Question q4 = new Question("Math, Easy: A is correct",
                 "A", "B", "C", 1,
-                Question.DIFFICULTY_EASY, Category.MATH);
+                Question.DIFFICULTY_EASY, Category.MULTIPLICATIONS);
         addQuestion(q4);
         Question q5 = new Question("Non existing, Easy: A is correct",
                 "A", "B", "C", 1,
@@ -116,6 +129,24 @@ public class QuizDbHelper extends SQLiteOpenHelper {
         cv.put(QuestionsTable.COLUMN_DIFFICULTY, question.getDifficulty());
         cv.put(QuestionsTable.COLUMN_CATEGORY_ID, question.getCategoryID());
         db.insert(QuestionsTable.TABLE_NAME, null, cv);
+    }
+
+    @SuppressLint("Range")
+    public List<Category> getAllCategories() {
+        List<Category> categoryList =  new ArrayList<>();
+        db = getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT * FROM " + CategoriesTable.TABLE_NAME, null);
+
+        if (c.moveToFirst()) {
+            do {
+                Category category = new Category();
+                category.setId(c.getInt(c.getColumnIndex(CategoriesTable._ID)));
+                category.setName(c.getString(c.getColumnIndex(CategoriesTable.COLUMN_NAME)));
+                categoryList.add(category);
+            } while (c.moveToNext());
+        }
+        c.close();
+        return categoryList;
     }
 
     @SuppressLint("Range")
