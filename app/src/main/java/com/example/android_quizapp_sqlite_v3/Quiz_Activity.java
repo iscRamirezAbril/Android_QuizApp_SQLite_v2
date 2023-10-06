@@ -26,12 +26,6 @@ public class Quiz_Activity extends AppCompatActivity {
     private QuizDbHelper dbHelper;
     private static final long COUNTDOWN_IN_MILIS = 30000;
 
-    private static final String KEY_SCORE = "keyScore";
-    private static final String KEY_QUESTION_COUNT = "keyQuestionCount";
-    private static final String KEY_MILLIS_LEFT = "keyMillisLeft";
-    private static final String KEY_ANSWERED = "keyAnswered";
-    private static final String KEY_QUESTION_LIST = "keyQuestionList";
-
     private TextView textViewQuestion;
     private TextView textViewQuestionCount;
     private TextView textViewCountDown;
@@ -54,8 +48,6 @@ public class Quiz_Activity extends AppCompatActivity {
     private boolean answered;
 
     private int score = 0;
-    private final int COLOR_SELECTED = Color.YELLOW;
-    private final int COLOR_DEFAULT = Color.WHITE;
 
     private GradientDrawable defaultBackground;
     private GradientDrawable selectedBackground;

@@ -23,13 +23,6 @@ public class QuizDbHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    public static synchronized QuizDbHelper getInstance(Context context) {
-        if (instance == null) {
-            instance = new QuizDbHelper(context.getApplicationContext());
-        }
-        return instance;
-    }
-
     @Override
     public void onCreate(SQLiteDatabase db) {
         this.db = db;
@@ -440,49 +433,6 @@ public class QuizDbHelper extends SQLiteOpenHelper {
         cv.put(QuestionsTable.COLUMN_DIFFICULTY, question.getDifficulty());
         cv.put(QuestionsTable.COLUMN_CATEGORY_ID, question.getCategoryID());
         db.insert(QuestionsTable.TABLE_NAME, null, cv);
-    }
-
-    @SuppressLint("Range")
-    public List<Category> getAllCategories() {
-        List<Category> categoryList =  new ArrayList<>();
-        db = getReadableDatabase();
-        Cursor c = db.rawQuery("SELECT * FROM " + CategoriesTable.TABLE_NAME, null);
-
-        if (c.moveToFirst()) {
-            do {
-                Category category = new Category();
-                category.setId(c.getInt(c.getColumnIndex(CategoriesTable._ID)));
-                category.setName(c.getString(c.getColumnIndex(CategoriesTable.COLUMN_NAME)));
-                categoryList.add(category);
-            } while (c.moveToNext());
-        }
-        c.close();
-        return categoryList;
-    }
-
-    @SuppressLint("Range")
-    public ArrayList<Question> getAllQuestions() {
-        ArrayList<Question> questionList = new ArrayList<>();
-        db = getReadableDatabase();
-        Cursor c = db.rawQuery("SELECT * FROM " + QuestionsTable.TABLE_NAME, null);
-
-        if (c.moveToFirst()) {
-            do {
-                Question question = new Question();
-                question.setId(c.getInt(c.getColumnIndex(QuestionsTable._ID)));
-                question.setQuestion(c.getString(c.getColumnIndex(QuestionsTable.COLUMN_QUESTION)));
-                question.setOption1(c.getString(c.getColumnIndex(QuestionsTable.COLUMN_OPTION1)));
-                question.setOption2(c.getString(c.getColumnIndex(QuestionsTable.COLUMN_OPTION2)));
-                question.setOption3(c.getString(c.getColumnIndex(QuestionsTable.COLUMN_OPTION3)));
-                question.setAnswerNr(c.getInt(c.getColumnIndex(QuestionsTable.COLUMN_ANSWER_NR)));
-                question.setDifficulty(c.getString(c.getColumnIndex(QuestionsTable.COLUMN_DIFFICULTY)));
-                question.setCategoryID(c.getInt(c.getColumnIndex(QuestionsTable.COLUMN_CATEGORY_ID)));
-                questionList.add(question);
-            } while (c.moveToNext());
-        }
-
-        c.close();
-        return questionList;
     }
 
     @SuppressLint("Range")

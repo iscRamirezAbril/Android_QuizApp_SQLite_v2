@@ -15,12 +15,9 @@ import java.lang.reflect.Array;
 import java.util.List;
 
 public class QuizMenu_Activity extends AppCompatActivity {
-    private static final int REQUEST_CODE_QUIZ = 1;
     public static final String EXTRA_CATEGORY_ID = "extraCategoryID";
     public static final String EXTRA_CATEGORY_NAME = "extraCategoryName";
     public static final String EXTRA_DIFFICULTY = "extraDifficulty";
-
-    public static final String SHARED_PREFS = "sharedPrefs";
     private Spinner spinnerDifficulty;
 
     @Override
