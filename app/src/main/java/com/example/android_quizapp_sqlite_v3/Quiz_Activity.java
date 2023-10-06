@@ -1,10 +1,12 @@
 package com.example.android_quizapp_sqlite_v3;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.view.Window;
@@ -18,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
+import android.graphics.drawable.GradientDrawable;
 
 public class Quiz_Activity extends AppCompatActivity {
     private QuizDbHelper dbHelper;
@@ -53,6 +56,9 @@ public class Quiz_Activity extends AppCompatActivity {
     private int score = 0;
     private final int COLOR_SELECTED = Color.YELLOW;
     private final int COLOR_DEFAULT = Color.WHITE;
+
+    private GradientDrawable defaultBackground;
+    private GradientDrawable selectedBackground;
 
 
     @Override
@@ -91,19 +97,31 @@ public class Quiz_Activity extends AppCompatActivity {
         buttonOption2.setOnClickListener(v -> selectedOption = 2);
         buttonOption3.setOnClickListener(v -> selectedOption = 3);
 
+        defaultBackground = (GradientDrawable) ContextCompat.getDrawable(this, R.drawable.borderbutton_default);
+
+        selectedBackground = (GradientDrawable) ContextCompat.getDrawable(this, R.drawable.borderbutton_selected);
+
+        resetButtonColors();  // Llamar a este método después de inicializar tus botones.
+
+        buttonOption1.setBackground(defaultBackground);
+        buttonOption2.setBackground(defaultBackground);
+        buttonOption3.setBackground(defaultBackground);
+
         buttonOption1.setOnClickListener(v -> {
             resetButtonColors();
-            buttonOption1.setBackgroundColor(COLOR_SELECTED);
+            buttonOption1.setBackground(selectedBackground);
             selectedOption = 1;
         });
+
         buttonOption2.setOnClickListener(v -> {
             resetButtonColors();
-            buttonOption2.setBackgroundColor(COLOR_SELECTED);
+            buttonOption2.setBackground(selectedBackground);
             selectedOption = 2;
         });
+
         buttonOption3.setOnClickListener(v -> {
             resetButtonColors();
-            buttonOption3.setBackgroundColor(COLOR_SELECTED);
+            buttonOption3.setBackground(selectedBackground);
             selectedOption = 3;
         });
 
@@ -192,21 +210,24 @@ public class Quiz_Activity extends AppCompatActivity {
     }
 
     private void showSolution() {
-        buttonOption1.setBackgroundColor(Color.rgb(255, 116, 116));
-        buttonOption2.setBackgroundColor(Color.rgb(255, 116, 116));
-        buttonOption3.setBackgroundColor(Color.rgb(255, 116, 116));
+        Drawable incorrectAnswer = ContextCompat.getDrawable(this, R.drawable.borderbutton_wrong);
+        Drawable correctAnswer = ContextCompat.getDrawable(this, R.drawable.borderbutton_correct);
+
+        buttonOption1.setBackground(incorrectAnswer);
+        buttonOption2.setBackground(incorrectAnswer);
+        buttonOption3.setBackground(incorrectAnswer);
 
         switch (currentQuestion.getAnswerNr()) {
             case 1:
-                buttonOption1.setBackgroundColor(Color.rgb(217, 241, 167));
+                buttonOption1.setBackground(correctAnswer);
                 textViewQuestion.setText("¡La respuesta 1 es correcta!");
                 break;
             case 2:
-                buttonOption2.setBackgroundColor(Color.rgb(217, 241, 167));
+                buttonOption2.setBackground(correctAnswer);
                 textViewQuestion.setText("¡La respuesta 2 es correcta!");
                 break;
             case 3:
-                buttonOption3.setBackgroundColor(Color.rgb(217, 241, 167));
+                buttonOption3.setBackground(correctAnswer);
                 textViewQuestion.setText("¡La respuesta 3 es correcta!");
                 break;
         }
@@ -219,9 +240,11 @@ public class Quiz_Activity extends AppCompatActivity {
     }
 
     private void resetButtonColors() {
-        buttonOption1.setBackgroundColor(COLOR_DEFAULT);
-        buttonOption2.setBackgroundColor(COLOR_DEFAULT);
-        buttonOption3.setBackgroundColor(COLOR_DEFAULT);
+        Drawable defaultBackground = ContextCompat.getDrawable(this, R.drawable.borderbutton_default);
+
+        buttonOption1.setBackground(defaultBackground);
+        buttonOption2.setBackground(defaultBackground);
+        buttonOption3.setBackground(defaultBackground);
     }
 
     private void finishQuiz() {
